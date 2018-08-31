@@ -1,14 +1,105 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
+$family-primary: 'Open Sans', sans-serif;
+
 @import 'bulma/bulma';
 @import 'libs/mixins';
+@import 'bulma-pricingtable/src/extension.sass';
 
 html {
   body {
     @include font-smoothing(on);
-  }
-  .burger {
-    color: $grey-dark;
-  }
-  .navbar-item{
-    font-size: 1em;
+
+    .burger {
+      color: $grey-dark;
+    }
+
+    .navbar-item{
+      font-size: 1em;
+      &.is-active {
+        font-weight: 700;
+      }
+    }
+
+    .info-section {
+      background-color: $white-ter;
+    }
+
+    .counter-section {
+      padding-bottom: 1rem;
+      .box {
+        margin-top: -5rem;
+      }
+    }
+
+    .sponsor-container {
+
+      .title {
+        margin: 3rem 0;
+        &:first-child {
+          margin: 0 0 3rem 0;
+        }
+      }
+
+      .sponsors {
+        text-align: justify;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0px;
+
+        li {
+          list-style: none;
+          display: flex;
+          justify-content: center;
+          align-content: flex-start;
+          align-items: flex-start;
+          flex-wrap: wrap;
+          margin: 0px 0px 40px 0px;
+          width: 275px;
+          max-width: 275px;
+
+          figure {
+            display: flex;
+            justify-content: center;
+            align-content: flex-start;
+            align-items: flex-start;
+            flex-wrap: wrap;
+
+            img{
+              margin: 0 auto;
+              height:auto;
+              width:220px;
+            }
+
+            figcaption {
+              padding: 12px 25px 0px 25px;
+              text-align: left;
+            }
+          }
+
+          &.principal {
+            width: 550px;
+            max-width: 550px;
+
+            figure {
+
+              img {
+                width:400px;
+                min-width: 400px;
+                clear: both;
+              }
+
+              figcaption {
+                padding: 12px 75px 0px 75px;
+                @include until(600px) {
+                  padding: 12px 12px 0px 12px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }

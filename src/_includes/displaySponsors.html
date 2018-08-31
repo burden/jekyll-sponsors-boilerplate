@@ -1,0 +1,13 @@
+<h2 class="title is-2 has-text-centered">{{ include.level | capitalize}}</h2>
+<ul class="sponsors">
+{% for sponsor in site.data.sponsors %}
+{% if sponsor.level == include.level %}
+  <li class="{{ sponsor.level }}">
+    <figure>
+      <a href="{{ sponsor.url }}"><img src="{{ sponsor.logo }}" alt="{{ sponsor.name }}"></a>
+      <figcaption>{{ sponsor.summary }}</figcaption>
+    </figure>
+  </li>
+{% endif %}
+{% endfor %}
+</ul>

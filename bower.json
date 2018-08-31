@@ -16,7 +16,8 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "^3.2.1",
-    "bulma": "^0.7.1"
+    "bulma": "^0.7.1",
+    "bulma-pricingtable": "^1.2.0",
+    "countUp.js": "^1.9.3"
   }
 }

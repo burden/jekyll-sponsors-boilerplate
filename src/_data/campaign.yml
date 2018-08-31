@@ -1,0 +1,67 @@
+options:
+  items:
+    - id: spacer
+      value: >-
+        --
+    - id: large-logo
+      value: >-
+        Large color logo on Sponsors page
+    - id: small-logo
+      value: >-
+        Small color logo on Sponsors page
+    - id: description
+      value: >-
+        Short description on Sponsors page
+    - id: footer
+      value: >-
+        Logo in sponsors area of footer
+    - id: spotlight
+      value: >-
+        Spotlight page
+groups:
+  - name: Community Sponsor
+    levels:
+      - name: Bronze
+        price: 500
+        per: month
+        items:
+          - id: small-logo
+          - id: spacer
+          - id: spacer
+      - name: Silver
+        price: 750
+        per: month
+        items:
+          - id: small-logo
+          - "Slogan beneath logo on Sponsors page"
+          - id: spacer
+      - name: Gold
+        price: 1000
+        per: month
+        items:
+          - id: small-logo
+          - id: description
+          - id: spacer
+      - name: Platinum
+        price: 1500
+        per: month
+        items:
+          - id: small-logo
+          - id: description
+          - id: footer
+  - name: Lead Sponsor
+    price: 2500
+    per: month
+    items:
+      - id: large-logo
+      - id: description
+      - id: footer
+      - id: spacer
+  - name: Principal Sponsor
+    price: 5000
+    per: month
+    items:
+      - id: large-logo
+      - id: description
+      - id: footer
+      - id: spotlight

@@ -1,0 +1,61 @@
+<section class="section">
+  <div class="container">
+    {% assign shared_items = site.data.campaign.options.items %}
+    {% for group in site.data.campaign.groups %}
+      {% unless group.levels %}
+      <div class="pricing-table is-horizontal">
+        <div class="pricing-plan is-info">
+          <div class="plan-header">{{ group.name }}{% if group.details %} <span style="display: block" class="has-text-weight-normal is-size-7">{{ group.details}}</span>{% endif %}</div>
+          <div class="plan-items">
+            {% for item in group.items %}
+            <div class="plan-item">
+              {% if item.id %}
+                {% for oitem in shared_items %}
+                  {% if oitem.id == item.id %}
+                  {{ oitem.value }}
+                  {% endif %}
+                {% endfor %}
+              {% else %}
+                {{ item }}
+              {% endif %}
+            </div>
+            {% endfor %}
+          </div>
+          <div class="plan-footer">
+            <div class="plan-price"><span class="plan-price-amount"><span class="plan-price-currency">$</span>{{ group.price }}</span>/{{ group.per }}</div>
+            <a href="#" class="button is-fullwidth stripe-buynow" data-amount="{{ group.price | times: 100 }}" data-description="{{ group.name }}">Choose</a>
+          </div>
+        </div>
+      </div>
+      {% else %}
+      <h1 class="title is-5 has-text-centered" style="margin: 3rem">{{ group.name }}</h1>
+      <div class="pricing-table">
+        {% for level in group.levels %}
+        <div class="pricing-plan is-info">
+          <div class="plan-header">{{ level.name }}</div>
+          <div class="plan-price"><span class="plan-price-amount"><span class="plan-price-currency">$</span>{{ level.price }}</span>/{{ level.per }}</div>
+          <div class="plan-items">
+            {% for item in level.items %}
+            <div class="plan-item">
+              {% if item.id %}
+                {% for oitem in shared_items %}
+                  {% if oitem.id == item.id %}
+                  {{ oitem.value }}
+                  {% endif %}
+                {% endfor %}
+              {% else %}
+                {{ item }}
+              {% endif %}
+            </div>
+            {% endfor %}
+          </div>
+          <div class="plan-footer">
+            <a href="#" class="button is-fullwidth stripe-buynow" data-amount="{{ level.price | times: 100 }}" data-description="{{ level.name }} {{ group.name }}">Choose</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endunless %}
+    {% endfor %}
+  </div>
+</section>
