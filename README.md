@@ -4,7 +4,9 @@
 
 A Jekyll theme for giving thanks to your sponsors made extraordinary using Bulma.
 
-[DEMO](https://jekyll-sponsors-boilerplate.burden.cc)
+**[DEMO](https://jekyll-sponsors-boilerplate.burden.cc)**
+
+![jekyll-sponsors-boilerplate](https://raw.githubusercontent.com/burden/jekyll-sponsors-boilerplate/master/screenshot.png)
 
 ## Features
 - [Bulma 0.7.1](https://github.com/jgthms/bulma/tree/0.7.1)

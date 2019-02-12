@@ -19,7 +19,8 @@ description: >- # this means to ignore newlines until "baseurl:"
   Thanks to our outstanding sponsors who are helping make our community the best it can be.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-
+analytics-id:
+  
 # Social settings
 github: burden/jekyll-sponsors-boilerplate
 maintainers:

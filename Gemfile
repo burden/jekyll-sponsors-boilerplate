@@ -3,6 +3,8 @@ ruby RUBY_VERSION
 gem "jekyll", "~> 3.8.3"
 gem "rake"
 gem "html-proofer"
+gem "nokogiri", ">= 1.8.5"
+gem "rack", ">= 2.0.6"
 group :jekyll_plugins do
   gem "jekyll-assets"
   gem "kramdown"
