@@ -1,49 +1,20 @@
 //= require countUp.js/countUp.js
-
 document.addEventListener('DOMContentLoaded', function () {
-
-  // Set is-active in navbar for current page
-  // Get current page URL
-  var url = window.location.href;
-
-  // Loop all .navbar-item elements
-  getAll('.navbar-item').forEach(function ($el) {
-    var ahref = $el.href;
-    if (getUri(url) == getUri(ahref)) {
-      $el.classList.toggle('is-active');
-    }
-  });
-
-  // Get all "navbar-burger" elements
-  var $navbarBurgers = getAll('.navbar-burger');
-  // Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-
-  // Check if there are any navbar burgers
-  if ($navbarBurgers.length > 0) {
-
-    // Add a click event on each of them
-    $navbarBurgers.forEach(function ($el) {
-      $el.addEventListener('click', function () {
-
-        // Get the target from the "data-target" attribute
-        var target = $el.dataset.target;
-        var $target = document.getElementById(target);
-
-        // Toggle the class on both the "navbar-burger" and the "navbar-menu"
-        $el.classList.toggle('is-active');
-        $target.classList.toggle('is-active');
-
-      });
-    });
-  }
-
   // Initialization for sponsorship page
-  if (getUri(url) == 'sponsorship') {
-    add_counter('articles-counter-upper', 3000, 3456);
-    add_counter('dau-counter-upper', 75, 123);
-    add_counter('impressions-counter-upper', 375, 456);
-    add_counter('likes-counter-upper', 690, 789);
+  if (window.location.pathname.split("/")[1] == 'sponsorship') {
+    // EDIT ZONE
+    // ################
+    // ex: add_counter('id', begin, end)
+    add_counter('articles-counter-upper', 1000, 1234);
+    add_counter('dau-counter-upper', 400, 456);
+    add_counter('impressions-counter-upper', 700, 789);
+    add_counter('likes-counter-upper', 500, 567);  
+    // ################
+    // NO MORE EDITING
   }
+
+  toggleActiveNav();
+  initHamburgers();
 
   function add_counter(id, start, end) {
     var oCubic = function(t, b, c, d) {
@@ -55,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var count_options = {
       useEasing: true,
       easingFn: oCubic,
-      useGrouping: false,
+      useGrouping: true,
       separator: ',',
       decimal: '.',
     };
@@ -68,18 +39,34 @@ document.addEventListener('DOMContentLoaded', function () {
       console.error(counter.error);
     }
   }
-
+  
+  // get all instances of dom element via css selector
   function getAll(selector) {
     return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
   }
-
-  function getUri(url) {
-    // remove # from URL
-    url = url.substring(0, (url.indexOf("#") == -1) ? url.length : url.indexOf("#"));
-    // remove parameters from URL
-    url = url.substring(0, (url.indexOf("?") == -1) ? url.length : url.indexOf("?"));
-    // select file name
-    url = url.substr(url.lastIndexOf("/") + 1);
-    return url
+  
+  // initialize mobile menu toggle
+  function initHamburgers() {
+    var navbarBurgers = getAll('.navbar-burger');
+    if (navbarBurgers.length > 0) {
+      navbarBurgers.forEach(function(el) {
+        el.addEventListener('click', function() {
+          var target = document.getElementById(el.dataset.target);
+          el.classList.toggle('is-active');
+          target.classList.toggle('is-active');
+        });
+      });
+    }  
+  }
+  
+  // Set is-active in navbar for current page
+  function toggleActiveNav() {
+    getAll('.navbar-item').forEach(function (el) {
+      if (el.pathname) {
+        if (window.location.pathname.split("/")[1] == el.pathname.split("/")[1]) {
+          el.classList.toggle('is-active');
+        }
+      }
+    });
   }
 });

@@ -1,5 +1,21 @@
 options:
-  items:
+  counts:
+    - id: articles-counter-upper
+      label: Articles
+      value: 1234
+    - id: dau-counter-upper
+      label: DAU
+      value: 456
+      context: K
+    - id: impressions-counter-upper
+      label: Impressions
+      value: 789
+      context: K /mo
+    - id: likes-counter-upper
+      label: Likes
+      value: 567
+      context: /day
+  includes:
     - id: spacer
       value: >-
         --

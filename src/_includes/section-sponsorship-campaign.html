@@ -1,6 +1,6 @@
 <section class="section">
   <div class="container">
-    {% assign shared_items = site.data.campaign.options.items %}
+    {% assign includes = site.data.campaign.options.includes %}
     {% for group in site.data.campaign.groups %}
       {% unless group.levels %}
       <div class="pricing-table is-horizontal">
@@ -10,7 +10,7 @@
             {% for item in group.items %}
             <div class="plan-item">
               {% if item.id %}
-                {% for oitem in shared_items %}
+                {% for oitem in includes %}
                   {% if oitem.id == item.id %}
                   {{ oitem.value }}
                   {% endif %}
@@ -38,7 +38,7 @@
             {% for item in level.items %}
             <div class="plan-item">
               {% if item.id %}
-                {% for oitem in shared_items %}
+                {% for oitem in includes %}
                   {% if oitem.id == item.id %}
                   {{ oitem.value }}
                   {% endif %}

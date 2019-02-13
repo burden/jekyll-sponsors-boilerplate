@@ -1,6 +1,6 @@
-# Jekyll Sponsors Boilerplate
-
 [![Build Status](https://travis-ci.org/burden/jekyll-sponsors-boilerplate.svg?branch=master)](https://travis-ci.org/burden/jekyll-sponsors-boilerplate)
+
+# jekyll-sponsors-boilerplate
 
 A Jekyll theme for giving thanks to your sponsors made extraordinary using Bulma.
 
@@ -9,7 +9,7 @@ A Jekyll theme for giving thanks to your sponsors made extraordinary using Bulma
 ![jekyll-sponsors-boilerplate](https://raw.githubusercontent.com/burden/jekyll-sponsors-boilerplate/master/screenshot.png)
 
 ## Features
-- [Bulma 0.7.1](https://github.com/jgthms/bulma/tree/0.7.1)
+- [Bulma 0.7.4](https://github.com/jgthms/bulma/tree/0.7.4)
 - Dependency management: [bower](https://bower.io)
 - Asset pipeline: [jekyll-assets](https://rubygems.org/gems/jekyll-assets)
   - [JS uglifier](https://rubygems.org/gems/uglifier/versions/3.2.0)
@@ -33,24 +33,63 @@ $ bower install
 $ jekyll serve
 ```
 
-### Configuring your sponsorship campaign
-Everything you need to configure your sponsorship campain can be found in `src/data/campaign.yml`
+## Configuring your sponsorship campaign
 
-Incentives can be referenced by adding a new sequence to the `items:` collection.
+Everything you need to configure your sponsorship campaign can be found in `src/_data/campaign.yml`. 
 
-**Example**
-```yaml
-options:
-  items:
-    - id: large-logo
-      value: >-
-        Large color logo on Sponsors page
+### Counts
+
+To configure the counter bar, update `src/_assets/javascript/main.js` and the `counts:` collection.
+
+```js
+// main.js
+// EDIT ZONE
+// ################
+// ex: add_counter('id', begin, end)
+add_counter('articles-counter-upper', 3000, 3456);
 ```
-`id:` will be referenced from `groups:`  
-`value:` is what will be displayed when calling `id`  
+```yaml
+# campaign.yml
+options:
+  counts:
+    - id: articles-counter-upper
+      label: Articles
+      value: "3,456"
+```
+
+Be sure that the `id:` block is set to the same value as the first argument in the javascript statement (articles-counter-upper). The second argument (3000) specifies where the count begins. The `value:` block is a placeholder in the event js fails (3,456). 
+
+If your number requires context, be sure to add a `context:` block
+
+```yaml
+# campaign.yml
+# outputs "456K"
+- id: dau-counter-upper
+  label: DAU
+  value: 456
+  context: K
+```
+
+### Includes
+
+You can configure strings to be used for repetitive incentives by adding a new sequence to the `includes:` collection. 
+
+```yaml
+# campaign.yml
+options:
+  includes:
+    - id: free-hug
+      value: >-
+        Large color logo on Sponsors page and a bear hug
+```
+`id:` is referenced from `groups:` via the `items:` block  
+`value:` is displayed when `id:` matches  
+
 See examples below for usage
 
-You may choose to display plans individually, or in columns. Feel free to use both.
+### Groups
+
+You may choose to display plans individually, or in columns. Feel free to use both. Add as many groups and items as you need. 
 
 To display plans individually.
 ```yaml
@@ -59,14 +98,14 @@ groups:
     price: 2500
     per: month
     items:
-      - id: large-logo
+      - id: free-hug
       - id: description
       - id: spacer
   - name: Principal Sponsor
     price: 5000
     per: month
     items:
-      - id: large-logo
+      - id: free-hug
       - id: description
       - "One-off special perk"
 ```
@@ -91,10 +130,9 @@ groups:
           - id: spacer
 ```
 
-### Adding Sponsors
+## Adding Sponsors
 Simply add a new sequence to `src/_data/sponsors.yml`
 
-**Example**
 ```yaml
 - name: Principal Sponsor 1
   url: https://example.com

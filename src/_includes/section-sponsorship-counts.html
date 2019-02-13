@@ -2,31 +2,15 @@
   <div class="container">
     <div class="box">
       <nav class="level">
-      <div class="level-item has-text-centered">
-        <div>
-          <p class="heading">Articles</p>
-          <p><span class="title is-1" id="articles-counter-upper">3,456</span></p>
+        {% for count in site.data.campaign.options.counts %}
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">{{ count.label }}</p>
+            <p><span class="title is-1" id="{{ count.id }}">{{ count.value }}</span>{% if count.context %}{{ count.context }}{% endif %}</p>
+          </div>
         </div>
-      </div>
-      <div class="level-item has-text-centered">
-        <div>
-          <p class="heading">DAU</p>
-          <p><span class="title is-1" id="dau-counter-upper">12</span>K</p>
-        </div>
-      </div>
-      <div class="level-item has-text-centered">
-        <div>
-          <p class="heading">Impressions</p>
-          <p><span class="title is-1" id="impressions-counter-upper">345</span>K /mo</p>
-        </div>
-      </div>
-      <div class="level-item has-text-centered">
-        <div>
-          <p class="heading">Likes</p>
-          <p><span class="title is-1" id="likes-counter-upper">789</span> /day</p>
-        </div>
-      </div>
-    </nav>
+        {% endfor %}
+      </nav>
     </div>
   </div>
 </section>
